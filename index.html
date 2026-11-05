@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ (Digital Gramam CSC) | ഓൺലൈൻ സേവന കേന്ദ്രവും ഡിജി പ്രിന്റും</title>
+  <meta name="description" content="ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ - കേരള സർക്കാർ വില്ലേജ് ഓഫീസ്, കെ-സ്മാർട്ട്, ആധാർ, പാൻ കാർഡ്, പാസ്പോർട്ട്, വിദ്യാഭ്യാസ സ്കോളർഷിപ്പ്, യൂട്ടിലിറ്റി ബിൽ, ഡിജി പ്രിന്റ് സേവനങ്ങൾ." />
+  <link rel="icon" type="image/png" href="assets/dg-logo.png" />
+
+  <!-- Google Fonts: Noto Sans Malayalam & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Animated Background Canvas & Floating Digital Pixels (Logo Theme) -->
+  <div class="bg-orb orb-green"></div>
+  <div class="bg-orb orb-blue"></div>
+  <div class="bg-orb orb-yellow"></div>
+  <div id="pixel-particles" class="pixel-particles" aria-hidden="true"></div>
+
+  <!-- Top Contact Bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span class="pulse-dot"></span>
+        <span>കേരളത്തിലെ എല്ലാ ഓൺലൈൻ സർക്കാർ-പൗര സേവനങ്ങളും ഒരൊറ്റ കുടക്കീഴിൽ!</span>
+      </div>
+      <div class="topbar-right">
+        <a href="https://maps.google.com/?q=Digital+Gramam+CSC+Edakalathur+Thrissur+680552" target="_blank" rel="noopener" class="topbar-link"><i class="fa-solid fa-location-dot"></i> എടക്കളത്തൂർ, തൃശൂർ - 680552</a>
+        <a href="tel:04872083582" class="topbar-link"><i class="fa-solid fa-phone-volume"></i> 0487 2083582</a>
+        <a href="https://wa.me/917356437712" target="_blank" rel="noopener" class="topbar-link whatsapp"><i class="fa-brands fa-whatsapp"></i> +91 7356437712</a>
+        <a href="mailto:digitalgramamcsc@gmail.com" class="topbar-link"><i class="fa-solid fa-envelope"></i> digitalgramamcsc@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo">
+        <div class="logo-ring-wrap">
+          <img src="assets/dg-logo.png" alt="Digital Gramam CSC Logo" class="dg-logo-img" />
+        </div>
+        <div class="brand-text">
+          <span class="brand-title-ml">ഡിജിറ്റൽ ഗ്രാമം <span class="csc-highlight">സിഎസ്ഇ</span></span>
+          <span class="brand-subtitle-en">DIGITAL GRAMAM CSC &amp; CITIZEN PORTAL</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active">ഹോം</a>
+        <a href="#quick-finder" class="nav-link">ഡോക്യുമെന്റ് ഫൈൻഡർ</a>
+        <a href="#services-section" class="nav-link">സേവനങ്ങൾ</a>
+        <!-- Special Animated DigiPrint Trigger Button in Navbar -->
+        <button type="button" class="digiprint-nav-btn" id="open-digiprint-nav" title="DigiPrint കസ്റ്റമൈസ്ഡ് പ്രിന്റിംഗ് സേവനങ്ങൾ കാണുക">
+          <img src="assets/digiprint-logo.png" alt="DigiPrint Logo" class="dp-nav-icon" />
+          <span>ഡിജി പ്രിന്റ്</span>
+          <span class="dp-sparkle"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        </button>
+        <a href="#owner-section" class="nav-link">ഞങ്ങളെക്കുറിച്ച്</a>
+        <a href="#contact-section" class="nav-link">ബന്ധപ്പെടുക</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="tel:04872083582" class="btn-call-header">
+          <i class="fa-solid fa-phone"></i>
+          <span>വിളിക്കുക</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="മെനു തുറക്കുക">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>വേഗത്തിലും കൃത്യതയിലും വിശ്വസ്തമായ ഡിജിറ്റൽ സേവനം</span>
+        </div>
+        <h1 class="hero-title">
+          സ്വാഗതം <span class="gradient-text">ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ</span>യിലേക്ക്
+        </h1>
+        <p class="hero-description">
+          റവന്യൂ വില്ലേജ് ഓഫീസ് (e-District), ഗ്രാമപഞ്ചായത്ത് കെ-സ്മാർട്ട് (K-SMART), ആധാർ, പാൻ കാർഡ്, പാസ്പോർട്ട്, റേഷൻ കാർഡ്, മോട്ടോർ വാഹന വകുപ്പ്, സ്കോളർഷിപ്പുകൾ, യൂട്ടിലിറ്റി ബില്ലുകൾ, ഡി.ടി.പി, <strong>ഡിജി പ്രിന്റ് (DigiPrint)</strong> കസ്റ്റം ഗിഫ്റ്റിംഗ് തുടങ്ങി <strong>150-ൽ അധികം സേവനങ്ങൾ</strong>ക്കും ആവശ്യമായ രേഖകൾ ഇവിടെ പരിശോധിക്കാം.
+        </p>
+
+        <!-- Quick Interactive Search & Dropdown Selector Box -->
+        <div class="quick-finder-card" id="quick-finder">
+          <div class="qf-header">
+            <i class="fa-solid fa-Folder-open"></i>
+            <div>
+              <h3>സേവനവും ആവശ്യമായ രേഖകളും തിരഞ്ഞെടുക്കുക</h3>
+              <p>താഴെയുള്ള ഡ്രോപ്പ്-ഡൗണിൽ നിന്ന് സേവനം തിരഞ്ഞെടുത്താൽ ഉടൻ ആവശ്യമായ ഡോക്യുമെന്റുകൾ കാണാം</p>
+            </div>
+          </div>
+
+          <div class="qf-controls">
+            <div class="qf-field">
+              <label for="category-select">1. സേവന വിഭാഗം (Category)</label>
+              <div class="select-wrapper">
+                <select id="category-select">
+                  <option value="all">എല്ലാ വിഭാഗങ്ങളും (All Categories)</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-arrow"></i>
+              </div>
+            </div>
+
+            <div class="qf-field">
+              <label for="service-select">2. സേവനം തിരഞ്ഞെടുക്കുക (Select Service Dropdown)</label>
+              <div class="select-wrapper">
+                <select id="service-select">
+                  <option value="">-- ഒരു സേവനം തിരഞ്ഞെടുക്കുക --</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-arrow"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Selected Service Document Result Panel -->
+          <div id="quick-result-panel" class="quick-result-panel hidden">
+            <!-- Populated via JS when a dropdown option is selected -->
+          </div>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="#services-section" class="btn-primary-glow">
+            <i class="fa-solid fa-list-check"></i> എല്ലാ സേവനങ്ങളും കാണുക
+          </a>
+          <button type="button" class="btn-digiprint-hero" id="open-digiprint-hero">
+            <img src="assets/digiprint-logo.png" alt="DigiPrint" />
+            <span>ഡിജി പ്രിന്റ് ഗാലറി തുറക്കുക</span>
+          </button>
+          <a href="https://wa.me/917356437712?text=%E0%B4%A8%E0%B4%AE%E0%B4%B8%E0%B5%8D%E0%B4%95%E0%B4%BE%E0%B4%B0%E0%B4%82%20%E0%B4%A1%E0%B4%BF%E0%B4%9C%E0%B4%BF%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%BD%20%E0%B4%97%E0%B5%8D%E0%B4%B0%E0%B4%BE%E0%B4%AE%E0%B4%82%20CSC" target="_blank" rel="noopener" class="btn-whatsapp-hero">
+            <i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പ് വഴി അപേക്ഷിക്കാം
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Hero Visual: Animated Logo Orbital + Owner Quick Card + DigiPrint Floating Badge -->
+      <div class="hero-visual">
+        <div class="orbital-stage">
+          <div class="orbit-ring ring-1"></div>
+          <div class="orbit-ring ring-2"></div>
+          <div class="orbit-ring ring-3"></div>
+          
+          <!-- Floating Orbit Icons -->
+          <div class="orbit-node node-1" title="e-District & Village Services"><i class="fa-solid fa-landmark"></i></div>
+          <div class="orbit-node node-2" title="K-SMART Panchayat Services"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="orbit-node node-3" title="Identity & Passport"><i class="fa-solid fa-passport"></i></div>
+          <div class="orbit-node node-4" title="Education & Scholarships"><i class="fa-solid fa-graduation-cap"></i></div>
+
+          <!-- Center Logo with Pixel Animation -->
+          <div class="center-logo-pod">
+            <img src="assets/dg-logo.png" alt="Digital Gramam CSC" class="hero-main-logo" />
+          </div>
+        </div>
+
+        <!-- Interactive DigiPrint Icon Launcher Card (Transparent Logo) -->
+        <div class="digiprint-floating-launcher" id="open-digiprint-card" role="button" tabindex="0" aria-label="DigiPrint കസ്റ്റമൈസ്ഡ് പ്രിന്റിംഗ് സേവനങ്ങൾ തുറക്കുക">
+          <div class="dp-launcher-logo-wrap">
+            <img src="assets/digiprint-logo.png" alt="DigiPrint Logo" class="dp-transparent-logo" />
+          </div>
+          <div class="dp-launcher-info">
+            <span class="dp-tag">സബ് കാറ്റഗറി • ക്ലിക്ക് ചെയ്യൂ</span>
+            <h4>DIGI PRINT (ഡിജി പ്രിന്റ്)</h4>
+            <p>A4 ഫ്രെയിം, മിനി ഫ്രെയിം, പോളറോയിഡ്സ്, കീചെയിൻ, വാലറ്റ്സ്, ഐഡി കാർഡ്സ് &amp; ഓൾ കസ്റ്റമൈസേഷൻ!</p>
+            <span class="dp-click-hint">എല്ലാ വിവരങ്ങളും കാണാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter & Live Search Section -->
+  <section class="services-section" id="services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow"><i class="fa-solid fa-layer-group"></i> കാറ്റഗറി അനുസരിച്ചുള്ള സേവനങ്ങൾ</span>
+        <h2 class="section-title">സേവനങ്ങളും ആവശ്യമായ <span class="gradient-text">ഡോക്യുമെന്റുകളും</span></h2>
+        <p class="section-subtitle">
+          ഏത് സേവനത്തിലും ക്ലിക്ക് ചെയ്താൽ അതിന് ആവശ്യമായ രേഖകൾ (Required Documents) ഡ്രോപ്പ്-ഡൗൺ ആയി തുറന്നുവരും. നേരിട്ട് വാട്സാപ്പിലൂടെ ഡോക്യുമെന്റുകൾ അയക്കാനും സാധിക്കും.
+        </p>
+      </div>
+
+      <!-- Search Input & Category Pills -->
+      <div class="filter-bar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="service-search" placeholder="സേവനം തിരയുക... (ഉദാ: വരുമാന സർട്ടിഫിക്കറ്റ്, K-SMART, പാസ്പോർട്ട്, റേഷൻ കാർഡ്, പോക്കുവരവ്, പ്ലസ് വൺ)" />
+          <button type="button" id="clear-search" class="clear-search hidden" aria-label="തിരച്ചിൽ മായ്ക്കുക">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="category-tabs" id="category-tabs">
+          <!-- Rendered dynamically by app.js + special DigiPrint tab -->
+        </div>
+      </div>
+
+      <!-- Expand / Collapse All Helper Bar -->
+      <div class="toolbar-row">
+        <div class="service-count-badge" id="service-count-badge">
+          എല്ലാ വിഭാഗങ്ങളിലുമായി <strong>150+</strong> സേവനങ്ങൾ ലഭ്യമാണ്
+        </div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-tool" id="expand-all-btn">
+            <i class="fa-solid fa-angles-down"></i> എല്ലാ ഡ്രോപ്പ്-ഡൗണുകളും തുറക്കുക
+          </button>
+          <button type="button" class="btn-tool" id="collapse-all-btn">
+            <i class="fa-solid fa-angles-up"></i> എല്ലാം ചുരുക്കുക
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic Services Container -->
+      <div id="services-container" class="services-container">
+        <!-- Populated via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Dedicated DIGI PRINT Interactive Banner & Section -->
+  <section class="digiprint-banner-section" id="digiprint-section">
+    <div class="container">
+      <div class="digiprint-showcase-box">
+        <div class="dp-showcase-header">
+          <div class="dp-icon-button-large" id="open-digiprint-main" role="button" tabindex="0" title="ഡിജി പ്രിന്റ് വിവരങ്ങൾ തുറക്കാൻ ക്ലിക്ക് ചെയ്യുക">
+            <img src="assets/digiprint-logo.png" alt="DigiPrint Transparent Logo" />
+            <span class="click-ripple-badge"><i class="fa-solid fa-hand-pointer"></i> ക്ലിക്ക് ചെയ്യുക</span>
+          </div>
+          <div class="dp-showcase-text">
+            <span class="dp-eyebrow">DIGITAL GRAMAM INITIATIVE • SUB-CATEGORY</span>
+            <h2>ഡിജി പ്രിന്റ് <span class="dp-rainbow-text">(DIGI PRINT)</span></h2>
+            <p class="dp-motto">"TURN YOUR VISION INTO PRINT" — കസ്റ്റമൈസ്ഡ് പ്രിന്റിംഗ് &amp; ഗിഫ്റ്റിംഗ് സ്റ്റുഡിയോ</p>
+            <p class="dp-desc">
+              ഡിജി പ്രിന്റ് ലോഗോയിൽ ക്ലിക്ക് ചെയ്താൽ അല്ലെങ്കിൽ താഴെ കാണുന്ന കാർഡുകളിൽ ക്ലിക്ക് ചെയ്താൽ <strong>A4 ഫ്രെയിം, മിനി ഫ്രെയിം, പോളറോയിഡ്സ്, ഹാംഗേഴ്സ്, കസ്റ്റമൈസ്ഡ് കീ ചെയിൻ, മിനി ആൽബം, ഫോട്ടോ മാഗസിൻ, ബൊക്കെയ്സ്/ബുക്ക് കേസ്, കസ്റ്റമൈസ്ഡ് വാലറ്റ്സ്, ഫെസ്റ്റിവൽ ഐഡി കാർഡ്സ്, സ്കൂൾ ഐഡി കാർഡ്സ്, ഫ്ലാഗ്സ്</strong> തുടങ്ങിയ എല്ലാ സേവനങ്ങളുടെയും ഡ്രോപ്പ്-ഡൗൺ വിവരങ്ങൾ കാണാം!
+            </p>
+            <div class="dp-action-row">
+              <button type="button" class="btn-dp-modal" id="open-digiprint-btn">
+                <i class="fa-solid fa-images"></i> ഡിജി പ്രിന്റ് പൂർണ്ണ കാറ്റലോഗ് തുറക്കുക
+              </button>
+              <a href="https://wa.me/917356437712?text=%E0%B4%A8%E0%B4%AE%E0%B4%B8%E0%B5%8D%E0%B4%95%E0%B4%BE%E0%B4%B0%E0%B4%82%2C%20DigiPrint%20%E0%B4%95%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B4%AE%E0%B5%88%E0%B4%B8%E0%B5%8D%E0%B4%A1%E0%B5%8D%20%E0%B4%AA%E0%B5%8D%E0%B4%B0%E0%B4%BF%E0%B4%A8%E0%B5%8D%E0%B4%B1%E0%B4%BF%E0%B4%82%E0%B4%97%E0%B5%8D%20%E0%B4%B5%E0%B4%BF%E0%B4%B5%E0%B4%B0%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B5%BE%20%E0%B4%85%E0%B4%B1%E0%B4%BF%E0%B4%AF%E0%B4%BE%E0%B5%BB%20%E0%B4%86%E0%B4%97%E0%B5%8D%E0%B4%B0%E0%B4%B9%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%81%E0%B4%A8%E0%B5%8D%E0%B4%A8%E0%B5%81." target="_blank" rel="noopener" class="btn-dp-wa">
+                <i class="fa-brands fa-whatsapp"></i> ഫോട്ടോകൾ വാട്സാപ്പിൽ അയക്കുക
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inline Preview Grid of DigiPrint Items (Expandable on click) -->
+        <div id="digiprint-inline-grid" class="digiprint-inline-grid">
+          <!-- Populated via app.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Owner Profile & About Section -->
+  <section class="owner-section" id="owner-section">
+    <div class="container">
+      <div class="owner-card">
+        <div class="owner-photo-col">
+          <div class="owner-photo-frame">
+            <img src="assets/owner.jpg" alt="മിഥുൻ ലാൽ വി ബി - Owner, Digital Gramam CSC" class="owner-img" />
+            <div class="owner-verified-badge">
+              <i class="fa-solid fa-circle-check"></i> Founder &amp; Owner
+            </div>
+          </div>
+        </div>
+
+        <div class="owner-details-col">
+          <span class="owner-eyebrow"><i class="fa-solid fa-user-tie"></i> സ്ഥാപകനും ഉടമയും (Owner Profile)</span>
+          <h2 class="owner-name">മിഥുൻ ലാൽ വി ബി <span class="owner-name-en">(Midhun Lal V B)</span></h2>
+          <p class="owner-role">ഓണർ — ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ (Digital Gramam CSC) &amp; ഡിജി പ്രിന്റ് (DigiPrint)</p>
+          <p class="owner-bio">
+            സാധാരണക്കാർക്ക് സർക്കാർ ഓഫീസുകളിലെയും വിവിധ ഓൺലൈൻ പോർട്ടലുകളിലെയും സേവനങ്ങൾ അലച്ചിലില്ലാതെ, വേഗത്തിലും മിതമായ നിരക്കിലും ലഭ്യമാക്കുക എന്ന ലക്ഷ്യത്തോടെയാണ് <strong>ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ</strong> പ്രവർത്തിക്കുന്നത്. വില്ലേജ് ഓഫീസ്, കെ-സ്മാർട്ട്, പാസ്പോർട്ട്, പാൻ കാർഡ്, സ്കോളർഷിപ്പുകൾ എന്നിവയ്ക്ക് പുറമെ <strong>ഡിജി പ്രിന്റ്</strong> വഴി മനോഹരമായ കസ്റ്റമൈസ്ഡ് പ്രിന്റിംഗ്-ഗിഫ്റ്റിംഗ് സേവനങ്ങളും ഞങ്ങൾ നൽകുന്നു.
+          </p>
+
+          <div class="owner-contact-grid">
+            <a href="tel:04872083582" class="owner-contact-item call-card">
+              <div class="oc-icon"><i class="fa-solid fa-phone-volume"></i></div>
+              <div class="oc-text">
+                <span>കോൾ ചെയ്യേണ്ട നമ്പർ (Landline / Call)</span>
+                <strong>0487 2083582</strong>
+              </div>
+            </a>
+
+            <a href="https://wa.me/917356437712" target="_blank" rel="noopener" class="owner-contact-item wa-card">
+              <div class="oc-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div class="oc-text">
+                <span>വാട്സാപ്പ് നമ്പർ (WhatsApp)</span>
+                <strong>+91 73564 37712</strong>
+              </div>
+            </a>
+
+            <a href="mailto:digitalgramamcsc@gmail.com" class="owner-contact-item mail-card">
+              <div class="oc-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+              <div class="oc-text">
+                <span>ഇമെയിൽ വിലാസം (Email ID)</span>
+                <strong>digitalgramamcsc@gmail.com</strong>
+              </div>
+            </a>
+
+            <a href="https://maps.google.com/?q=Digital+Gramam+CSC+Edakalathur+Thrissur+680552" target="_blank" rel="noopener" class="owner-contact-item loc-card">
+              <div class="oc-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="oc-text">
+                <span>സ്ഥാപനത്തിന്റെ വിലാസം (Address)</span>
+                <strong>ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ, എടക്കളത്തൂർ, പി.ഒ എടക്കളത്തൂർ, തൃശൂർ, കേരള - 680552</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Quick Enquiry Section -->
+  <section class="contact-section" id="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow"><i class="fa-solid fa-headset"></i> സഹായത്തിനായി ബന്ധപ്പെടാം</span>
+        <h2 class="section-title">വീട്ടിലിരുന്നും സേവനങ്ങൾക്ക് <span class="gradient-text">അപേക്ഷിക്കാം!</span></h2>
+        <p class="section-subtitle">
+          ആവശ്യമായ ഡോക്യുമെന്റുകൾ ഞങ്ങളുടെ വാട്സാപ്പ് നമ്പറിലേക്കോ ഇമെയിലിലേക്കോ അയച്ചുതന്നാൽ നിങ്ങളുടെ അപേക്ഷകൾ ഉടൻ സമർപ്പിക്കുന്നതാണ്. നേരിട്ട് സന്ദർശിക്കാനും സ്വാഗതം!
+        </p>
+      </div>
+
+      <div class="contact-cards-row">
+        <div class="contact-box">
+          <div class="cb-icon location"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>ഞങ്ങളുടെ വിലാസം</h3>
+          <p><strong>ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ</strong><br/>എടക്കളത്തൂർ, പി.ഒ എടക്കളത്തൂർ,<br/>തൃശൂർ, കേരള — പിൻകോഡ്: <strong>680552</strong></p>
+          <a href="https://maps.google.com/?q=Digital+Gramam+CSC+Edakalathur+Thrissur+680552" target="_blank" rel="noopener" class="cb-btn loc-btn"><i class="fa-solid fa-diamond-turn-right"></i> Google Maps ലൊക്കേഷൻ</a>
+        </div>
+
+        <div class="contact-box">
+          <div class="cb-icon phone"><i class="fa-solid fa-phone-flip"></i></div>
+          <h3>ഫോൺ വഴി വിളിക്കാം</h3>
+          <p>സേവനങ്ങളെക്കുറിച്ചുള്ള സംശയങ്ങൾക്കും വിവരങ്ങൾക്കും നേരിട്ട് വിളിക്കുക.</p>
+          <a href="tel:04872083582" class="cb-btn phone-btn">0487 2083582</a>
+        </div>
+
+        <div class="contact-box featured">
+          <div class="cb-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></div>
+          <h3>വാട്സാപ്പിൽ രേഖകൾ അയക്കാം</h3>
+          <p>സർട്ടിഫിക്കറ്റുകൾക്കും ഡിജി പ്രിന്റ് ഓർഡറുകൾക്കും വാട്സാപ്പിൽ മെസ്സേജ് അയക്കുക.</p>
+          <a href="https://wa.me/917356437712" target="_blank" rel="noopener" class="cb-btn wa-btn">7356437712</a>
+        </div>
+
+        <div class="contact-box">
+          <div class="cb-icon email"><i class="fa-solid fa-envelope"></i></div>
+          <h3>ഇമെയിൽ അയക്കാം</h3>
+          <p>പി.ഡി.എഫ് രേഖകളും പ്രിന്റിംഗ് ഫയലുകളും ഇമെയിൽ വഴി അയക്കാം.</p>
+          <a href="mailto:digitalgramamcsc@gmail.com" class="cb-btn mail-btn">digitalgramamcsc@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/dg-logo.png" alt="Digital Gramam Logo" class="footer-logo" />
+        <div>
+          <h4>ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ (Digital Gramam CSC)</h4>
+          <p>ഓണർ: മിഥുൻ ലാൽ വി ബി | എടക്കളത്തൂർ, പി.ഒ എടക്കളത്തൂർ, തൃശൂർ, കേരള - 680552</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <span><i class="fa-solid fa-location-dot"></i> എടക്കളത്തൂർ, തൃശൂർ - 680552</span>
+        <span><i class="fa-solid fa-phone"></i> 0487 2083582</span>
+        <span><i class="fa-brands fa-whatsapp"></i> 7356437712</span>
+        <span><i class="fa-solid fa-envelope"></i> digitalgramamcsc@gmail.com</span>
+      </div>
+      <div class="footer-copy">
+        &copy; <span id="year"></span> Digital Gramam CSC &amp; DigiPrint. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- DIGI PRINT Interactive Popup Modal -->
+  <div class="dp-modal-overlay hidden" id="dp-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="dp-modal-title">
+    <div class="dp-modal-content">
+      <button type="button" class="dp-modal-close" id="dp-modal-close" aria-label="അടയ്ക്കുക">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="dp-modal-header">
+        <img src="assets/digiprint-logo.png" alt="DigiPrint Logo" class="dp-modal-logo" />
+        <div>
+          <span class="dp-modal-badge">DIGITAL GRAMAM INITIATIVE</span>
+          <h2 id="dp-modal-title">ഡിജി പ്രിന്റ് (DIGI PRINT) — കസ്റ്റമൈസ്ഡ് പ്രിന്റിംഗ് സേവനങ്ങൾ</h2>
+          <p>ഏത് പ്രിന്റിംഗ് സേവനത്തിലും ക്ലിക്ക് ചെയ്ത് വിവരങ്ങൾ കാണാം, നേരിട്ട് വാട്സാപ്പിൽ ഓർഡർ ചെയ്യാം!</p>
+        </div>
+      </div>
+
+      <div class="dp-modal-body" id="dp-modal-grid">
+        <!-- Populated via app.js -->
+      </div>
+
+      <div class="dp-modal-footer">
+        <div class="dp-footer-note">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>എല്ലാത്തരം കസ്റ്റമൈസേഷനും ലഭ്യമാണ് (All Type of Customization Available).</span>
+        </div>
+        <div class="dp-footer-btns">
+          <a href="tel:04872083582" class="btn-dp-call"><i class="fa-solid fa-phone"></i> 0487 2083582</a>
+          <a href="https://wa.me/917356437712?text=%E0%B4%A8%E0%B4%AE%E0%B4%B8%E0%B5%8D%E0%B4%95%E0%B4%BE%E0%B4%B0%E0%B4%82%2C%20DigiPrint%20%E0%B4%93%E0%B5%BC%E0%B4%A1%E0%B5%BC%20%E0%B4%9A%E0%B5%86%E0%B4%AF%E0%B5%8D%E0%B4%AF%E0%B4%BE%E0%B5%BB%20%E0%B4%86%E0%B4%97%E0%B5%8D%E0%B4%B0%E0%B4%B9%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%81%E0%B4%A8%E0%B5%8D%E0%B4%A8%E0%B5%81." target="_blank" rel="noopener" class="btn-dp-whatsapp"><i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പ് ഓർഡർ (7356437712)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Interactive AI Chatbot with Animated 3D AI Model ("ഡിജിറ്റൽ ഗ്രാമം എഐ സഹായി") -->
+  <div class="chatbot-wrapper" id="chatbot-wrapper">
+    <!-- Floating Greeting Bubble from 3D AI Mascot -->
+    <div class="ai-mascot-speech" id="ai-mascot-speech">
+      <button type="button" class="speech-close" id="speech-close" aria-label="അടയ്ക്കുക">&times;</button>
+      <p>👋 <strong>നമസ്കാരം!</strong> ഏത് സർട്ടിഫിക്കറ്റിന്റെയും ഡോക്യുമെന്റ്സ് അറിയാൻ എന്നോട് ചോദിക്കൂ!</p>
+    </div>
+
+    <!-- Animated 3D AI Character Launcher Button -->
+    <button type="button" class="chatbot-toggle-btn ai-character-launcher" id="chatbot-toggle-btn" aria-label="ലൈവ് എഐ ചാറ്റ് ബോട്ട് തുറക്കുക">
+      <div class="ai-holo-base"></div>
+      <div class="ai-character-figure">
+        <img src="assets/ai-avatar.png" alt="Midhun AI Assistant 3D Model" class="ai-full-model" />
+      </div>
+      <div class="ai-launcher-badge">
+        <span class="ai-pulse-dot"></span>
+        <span class="cb-label">എഐ സഹായി (AI Chat)</span>
+      </div>
+    </button>
+
+    <div class="chatbot-window hidden" id="chatbot-window">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar-stage" id="chat-avatar-stage">
+            <img src="assets/ai-avatar-head.png" alt="AI Model Avatar" class="chat-avatar-3d" />
+            <span class="ai-speaking-ring"></span>
+          </div>
+          <div>
+            <h4>ഡിജിറ്റൽ ഗ്രാമം AI സഹായി</h4>
+            <span class="chat-online"><span class="online-dot"></span> 3D AI Assistant • ഓൺലൈൻ</span>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button type="button" class="chat-voice-btn" id="chat-voice-btn" title="വോയ്സ് ഓൺ/ഓഫ് (AI Voice)">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <button type="button" class="chat-close-btn" id="chat-close-btn" aria-label="ചാറ്റ് അടയ്ക്കുക">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Animated 3D AI Model Stage Inside Chat Window -->
+      <div class="ai-chat-hero-stage" id="ai-chat-hero-stage">
+        <div class="ai-stage-glow"></div>
+        <img src="assets/ai-avatar-head.png" alt="Animated 3D AI Assistant" class="ai-stage-character" id="ai-stage-character" />
+        <div class="ai-stage-status">
+          <span class="ai-wave-bars" id="ai-wave-bars">
+            <span></span><span></span><span></span><span></span><span></span>
+          </span>
+          <small id="ai-status-text">നിങ്ങളെ സഹായിക്കാൻ തയ്യാറാണ്!</small>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+        <!-- Initial greeting populated by app.js -->
+      </div>
+
+      <div class="chat-quick-chips" id="chat-quick-chips">
+        <button type="button" class="chat-chip" data-query="വരുമാന സർട്ടിഫിക്കറ്റ്">വരുമാന സർട്ടിഫിക്കറ്റ്</button>
+        <button type="button" class="chat-chip" data-query="റേഷൻ കാർഡ്">റേഷൻ കാർഡ്</button>
+        <button type="button" class="chat-chip" data-query="പാസ്പോർട്ട്">പാസ്പോർട്ട്</button>
+        <button type="button" class="chat-chip" data-query="DigiPrint">ഡിജി പ്രിന്റ് (DigiPrint)</button>
+        <button type="button" class="chat-chip" data-query="ഫോൺ നമ്പർ">ഫോൺ &amp; അഡ്രസ്സ്</button>
+      </div>
+
+      <form class="chat-input-area" id="chat-form">
+        <input type="text" id="chat-input" placeholder="ഏത് സേവനത്തിന്റെ ഡോക്യുമെന്റ്സും ചോദിക്കൂ..." autocomplete="off" />
+        <button type="submit" class="chat-send-btn" aria-label="അയക്കുക">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
