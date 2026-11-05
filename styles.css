@@ -229,6 +229,7 @@ body {
   gap: 12px;
   text-decoration: none;
   transition: var(--transition);
+  flex-shrink: 0;
 }
 
 .brand-logo:hover {
@@ -247,6 +248,7 @@ body {
   border: 1.5px solid rgba(0, 158, 73, 0.3);
   box-shadow: 0 4px 12px rgba(0, 158, 73, 0.15);
   transition: var(--transition);
+  flex-shrink: 0;
 }
 
 .brand-logo:hover .logo-ring-wrap {
@@ -263,24 +265,34 @@ body {
 .brand-text {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .brand-title-ml {
-  font-size: 1.25rem;
+  font-size: 1.28rem;
   font-weight: 800;
   color: var(--dg-blue-dark);
   line-height: 1.2;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.brand-nowrap {
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .csc-highlight {
   color: var(--dg-green);
+  white-space: nowrap;
 }
 
 .brand-subtitle-en {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.8px;
   color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -351,6 +363,37 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-auth-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: var(--dg-blue-dark);
+  border: 2px solid var(--dg-blue);
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding: 9px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-auth-header:hover {
+  background: var(--dg-blue);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.btn-auth-header.logged-in {
+  background: #f0fdf4;
+  border-color: var(--dg-green);
+  color: var(--dg-green);
 }
 
 .btn-call-header {
@@ -366,6 +409,7 @@ body {
   border-radius: 999px;
   box-shadow: var(--shadow-glow-green);
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .btn-call-header:hover {
@@ -2567,6 +2611,405 @@ body {
 }
 
 /* ==========================================================================
+   Supabase Auth Modal & Exclusive Member Dashboard Styles
+   ========================================================================== */
+.auth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(8px);
+  z-index: 220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.auth-modal-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 24px;
+  padding: 28px 26px;
+  box-shadow: 0 25px 60px rgba(0, 31, 92, 0.35);
+  border: 2px solid rgba(0, 158, 73, 0.35);
+  position: relative;
+  animation: modalZoom 0.28s ease forwards;
+}
+
+.auth-modal-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.auth-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.auth-modal-header h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--dg-blue-dark);
+}
+
+.auth-modal-header p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.auth-tabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 5px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  gap: 4px;
+}
+
+.auth-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 9px 8px;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.auth-tab.active {
+  background: #ffffff;
+  color: var(--dg-blue-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.auth-alert {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.auth-alert.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.auth-alert.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dg-blue-dark);
+  margin-bottom: 5px;
+}
+
+.auth-field input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0, 61, 165, 0.22);
+  font-family: inherit;
+  font-size: 0.94rem;
+  background: #f8fafc;
+}
+
+.auth-field input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: var(--dg-green);
+  box-shadow: 0 0 0 3px rgba(0, 158, 73, 0.14);
+}
+
+.btn-auth-submit {
+  background: linear-gradient(135deg, var(--dg-blue), var(--dg-green));
+  color: #ffffff;
+  border: none;
+  padding: 13px 18px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow-glow-blue);
+  transition: var(--transition);
+}
+
+.btn-auth-submit:hover {
+  transform: translateY(-2px);
+}
+
+.sb-guide-steps {
+  background: #f0fdf4;
+  border: 1px solid rgba(0, 158, 73, 0.3);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+  font-size: 0.82rem;
+}
+
+.sb-guide-steps h4 {
+  color: var(--dg-green);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.sb-guide-steps ol {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Logged-in Exclusive Citizen Member Dashboard */
+.member-dashboard-section {
+  padding: 20px 0 30px;
+}
+
+.member-dash-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 60%, #eff6ff 100%);
+  border: 2.5px solid var(--dg-green);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+}
+
+.md-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+  border-bottom: 1.5px dashed rgba(0, 61, 165, 0.2);
+}
+
+.md-user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.md-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--dg-green), var(--dg-blue));
+  color: #ffffff;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.md-vip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.md-user-info h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--dg-blue-dark);
+  margin-top: 4px;
+}
+
+.md-user-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.md-header-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-supabase-setup {
+  background: #ffffff;
+  border: 1.5px solid var(--dg-blue);
+  color: var(--dg-blue);
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.btn-logout {
+  background: #fee2e2;
+  border: 1.5px solid #ef4444;
+  color: #b91c1c;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.md-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.md-feature-box {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1.5px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.md-feature-box h4 {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--dg-blue-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.md-feature-box h4 i {
+  color: var(--dg-green);
+}
+
+.md-sub {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.md-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.md-form select,
+.md-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(0, 61, 165, 0.2);
+  font-family: inherit;
+  font-size: 0.88rem;
+}
+
+.btn-md-submit {
+  background: var(--dg-green);
+  color: #ffffff;
+  border: none;
+  padding: 11px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.md-list-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 210px;
+  overflow-y: auto;
+}
+
+.md-app-item {
+  background: #f8fafc;
+  border-left: 4px solid var(--dg-blue);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.83rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.md-status-pill {
+  background: #dcfce7;
+  color: #166534;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.md-vip-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vip-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f0fdf4;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 158, 73, 0.25);
+  font-size: 0.84rem;
+}
+
+.vip-perk-item i {
+  font-size: 1.3rem;
+  color: var(--dg-green);
+}
+
+.coupon-code {
+  display: inline-block;
+  background: var(--dg-blue-dark);
+  color: #fde047;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  margin-left: 4px;
+}
+
+/* ==========================================================================
    Responsive Design (Tablet, Mobile & Small Smartphone Screens)
    ========================================================================== */
 @media (max-width: 992px) {
@@ -2623,23 +3066,30 @@ body {
   /* Sticky Navbar Mobile */
   .nav-container {
     height: 68px;
+    gap: 8px;
   }
   .logo-ring-wrap {
-    width: 46px;
-    height: 46px;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
   }
   .brand-title-ml {
-    font-size: 1.05rem;
+    font-size: 0.96rem;
+    white-space: nowrap;
   }
   .brand-subtitle-en {
-    font-size: 0.6rem;
+    font-size: 0.56rem;
+    white-space: nowrap;
+  }
+  .btn-auth-header {
+    padding: 8px 11px;
+    font-size: 0.76rem;
   }
   .btn-call-header span {
     display: none;
   }
   .btn-call-header {
-    padding: 10px 13px;
+    padding: 9px 12px;
   }
 
   .nav-links {

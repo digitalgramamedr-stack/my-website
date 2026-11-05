@@ -70,6 +70,10 @@
       </nav>
 
       <div class="nav-actions">
+        <button type="button" class="btn-auth-header" id="open-auth-btn">
+          <i class="fa-solid fa-user-lock" id="auth-btn-icon"></i>
+          <span id="auth-btn-text">ലോഗിൻ / രജിസ്റ്റർ</span>
+        </button>
         <a href="tel:04872083582" class="btn-call-header">
           <i class="fa-solid fa-phone"></i>
           <span>വിളിക്കുക</span>
@@ -90,7 +94,7 @@
           <span>വേഗത്തിലും കൃത്യതയിലും വിശ്വസ്തമായ ഡിജിറ്റൽ സേവനം</span>
         </div>
         <h1 class="hero-title">
-          സ്വാഗതം <span class="gradient-text">ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ</span>യിലേക്ക്
+          സ്വാഗതം <span class="gradient-text brand-nowrap">ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ</span>യിലേക്ക്
         </h1>
         <p class="hero-description">
           റവന്യൂ വില്ലേജ് ഓഫീസ് (e-District), ഗ്രാമപഞ്ചായത്ത് കെ-സ്മാർട്ട് (K-SMART), ആധാർ, പാൻ കാർഡ്, പാസ്പോർട്ട്, റേഷൻ കാർഡ്, മോട്ടോർ വാഹന വകുപ്പ്, സ്കോളർഷിപ്പുകൾ, യൂട്ടിലിറ്റി ബില്ലുകൾ, ഡി.ടി.പി, <strong>ഡിജി പ്രിന്റ് (DigiPrint)</strong> കസ്റ്റം ഗിഫ്റ്റിംഗ് തുടങ്ങി <strong>150-ൽ അധികം സേവനങ്ങൾ</strong>ക്കും ആവശ്യമായ രേഖകൾ ഇവിടെ പരിശോധിക്കാം.
@@ -177,6 +181,88 @@
             <h4>DIGI PRINT (ഡിജി പ്രിന്റ്)</h4>
             <p>A4 ഫ്രെയിം, മിനി ഫ്രെയിം, പോളറോയിഡ്സ്, കീചെയിൻ, വാലറ്റ്സ്, ഐഡി കാർഡ്സ് &amp; ഓൾ കസ്റ്റമൈസേഷൻ!</p>
             <span class="dp-click-hint">എല്ലാ വിവരങ്ങളും കാണാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logged-in Exclusive Citizen Member Dashboard (Unlocked after Login) -->
+  <section class="member-dashboard-section hidden" id="member-dashboard">
+    <div class="container">
+      <div class="member-dash-card">
+        <div class="md-header">
+          <div class="md-user-info">
+            <div class="md-avatar"><i class="fa-solid fa-user-check"></i></div>
+            <div>
+              <span class="md-vip-badge"><i class="fa-solid fa-crown"></i> രജിസ്റ്റർ ചെയ്ത മെമ്പർ (Verified Citizen Portal)</span>
+              <h3 id="md-welcome-title">സ്വാഗതം, ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ മെമ്പർ!</h3>
+              <p id="md-user-meta">നിങ്ങൾക്കായി പ്രത്യേക ഓൺലൈൻ ഫീച്ചറുകൾ അൺലോക്ക് ചെയ്തിരിക്കുന്നു.</p>
+            </div>
+          </div>
+          <div class="md-header-actions">
+            <button type="button" class="btn-supabase-setup" id="open-supabase-guide-btn">
+              <i class="fa-solid fa-database"></i> Supabase ക്ലൗഡ് സെറ്റപ്പ് ഗൈഡ്
+            </button>
+            <button type="button" class="btn-logout" id="logout-btn">
+              <i class="fa-solid fa-right-from-bracket"></i> ലോഗൗട്ട്
+            </button>
+          </div>
+        </div>
+
+        <div class="md-features-grid">
+          <!-- Feature 1: Submit Direct Online Service Request -->
+          <div class="md-feature-box">
+            <h4><i class="fa-solid fa-file-circle-plus"></i> 1. പുതിയ ഓൺലൈൻ അപേക്ഷ സമർപ്പിക്കുക</h4>
+            <p class="md-sub">വീട്ടിലിരുന്ന് തന്നെ സർട്ടിഫിക്കറ്റുകൾക്കും ഡിജി പ്രിന്റ് ഓർഡറുകൾക്കും അപേക്ഷിക്കാം</p>
+            <form id="member-service-form" class="md-form">
+              <select id="md-service-name" required>
+                <option value="">-- ആവശ്യമുള്ള സേവനം തിരഞ്ഞെടുക്കുക --</option>
+                <option value="വരുമാന സർട്ടിഫിക്കറ്റ് (Income Certificate)">വരുമാന സർട്ടിഫിക്കറ്റ് (Income Certificate)</option>
+                <option value="ജാതി / നോൺ-ക്രീമിലെയർ സർട്ടിഫിക്കറ്റ്">ജാതി / നോൺ-ക്രീമിലെയർ സർട്ടിഫിക്കറ്റ്</option>
+                <option value="കൈവശാവകാശം / ലൊക്കേഷൻ സർട്ടിഫിക്കറ്റ്">കൈവശാവകാശം / ലൊക്കേഷൻ സർട്ടിഫിക്കറ്റ്</option>
+                <option value="കെ-സ്മാർട്ട് (ജനന/മരണ/വിവാഹ/കെട്ടിട നികുതി)">കെ-സ്മാർട്ട് (ജനന/മരണ/വിവാഹ/കെട്ടിട നികുതി)</option>
+                <option value="പാസ്പോർട്ട് / പാൻ കാർഡ് / ആധാർ അപ്ഡേറ്റ്">പാസ്പോർട്ട് / പാൻ കാർഡ് / ആധാർ അപ്ഡേറ്റ്</option>
+                <option value="റേഷൻ കാർഡ് സേവനങ്ങൾ">റേഷൻ കാർഡ് സേവനങ്ങൾ</option>
+                <option value="പ്ലസ് വൺ / ഡിഗ്രി / സ്കോളർഷിപ്പ് അപേക്ഷ">പ്ലസ് വൺ / ഡിഗ്രി / സ്കോളർഷിപ്പ് അപേക്ഷ</option>
+                <option value="DigiPrint കസ്റ്റമൈസ്ഡ് ഗിഫ്റ്റ് / ഫ്രെയിം / ഐഡി കാർഡ്">DigiPrint കസ്റ്റമൈസ്ഡ് ഗിഫ്റ്റ് / ഫ്രെയിം / ഐഡി കാർഡ്</option>
+              </select>
+              <input type="text" id="md-service-note" placeholder="കൂടുതൽ വിവരങ്ങൾ / ഫോൺ നമ്പർ..." required />
+              <button type="submit" class="btn-md-submit">
+                <i class="fa-solid fa-paper-plane"></i> അപേക്ഷ രജിസ്റ്റർ ചെയ്യുക
+              </button>
+            </form>
+          </div>
+
+          <!-- Feature 2: Live Application Status Tracker -->
+          <div class="md-feature-box">
+            <h4><i class="fa-solid fa-bars-progress"></i> 2. എന്റെ അപേക്ഷകളുടെ തല്സ്ഥിതി (Application Tracker)</h4>
+            <p class="md-sub">നിങ്ങൾ സമർപ്പിച്ച അപേക്ഷകളുടെ സ്റ്റാറ്റസ് ഇവിടെ തത്സമയം കാണാം</p>
+            <div id="md-applications-list" class="md-list-box">
+              <!-- Populated dynamically via JS / Supabase -->
+            </div>
+          </div>
+
+          <!-- Feature 3: Document Expiry & Renewal Reminder Vault -->
+          <div class="md-feature-box">
+            <h4><i class="fa-solid fa-bell"></i> 3. ഡോക്യുമെന്റ് റിമൈൻഡർ &amp; VIP കൂപ്പൺ</h4>
+            <p class="md-sub">വരുമാന സർട്ടിഫിക്കറ്റ് (1 വർഷം), വാഹന ഇൻഷുറൻസ്, ലൈസൻസ് കാലാവധി ഓർമ്മിപ്പിക്കാൻ സേവ് ചെയ്യാം</p>
+            <div class="md-vip-perks">
+              <div class="vip-perk-item">
+                <i class="fa-solid fa-tags"></i>
+                <div>
+                  <strong>DIGI PRINT 10% മെമ്പർ ഡിസ്കൗണ്ട് കോഡ്:</strong>
+                  <span class="coupon-code">DGCSC10</span>
+                </div>
+              </div>
+              <div class="vip-perk-item">
+                <i class="fa-solid fa-bolt"></i>
+                <div>
+                  <strong>പ്രയോറിറ്റി ടോക്കൺ ബുക്കിംഗ്:</strong>
+                  <span>ക്യൂ നിൽക്കാതെ സിഎസ്ഇ സേവനങ്ങൾക്കായി മുൻഗണന!</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -498,8 +584,98 @@
     </div>
   </div>
 
+  <!-- Supabase Auth (Login / Register) & Setup Guide Modal -->
+  <div class="auth-modal-overlay hidden" id="auth-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="auth-modal-card">
+      <button type="button" class="dp-modal-close" id="auth-modal-close" aria-label="അടയ്ക്കുക">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="auth-modal-header">
+        <img src="assets/dg-logo.png" alt="Digital Gramam Logo" class="auth-logo" />
+        <h3 id="auth-modal-title">ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ — സിറ്റിസൺ ലോഗിൻ</h3>
+        <p>ലോഗിൻ ചെയ്താൽ ഓൺലൈൻ അപേക്ഷാ ട്രാക്കിംഗ്, പ്രയോറിറ്റി ബുക്കിംഗ്, VIP ഡിസ്കൗണ്ട് എന്നിവ ലഭിക്കും</p>
+      </div>
+
+      <!-- Auth Tabs: Login | Register | Supabase Setup Guide -->
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-tab="login">ലോഗിൻ (Login)</button>
+        <button type="button" class="auth-tab" data-tab="register">പുതിയ രജിസ്ട്രേഷൻ (Sign Up)</button>
+        <button type="button" class="auth-tab" data-tab="setup"><i class="fa-solid fa-gear"></i> Supabase സെറ്റപ്പ്</button>
+      </div>
+
+      <div id="auth-alert-box" class="auth-alert hidden"></div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form">
+        <div class="auth-field">
+          <label for="login-email">ഇമെയിൽ വിലാസം (Email ID)</label>
+          <input type="email" id="login-email" placeholder="example@gmail.com" required />
+        </div>
+        <div class="auth-field">
+          <label for="login-password">പാസ്‌വേഡ് (Password)</label>
+          <input type="password" id="login-password" placeholder="••••••••" required minlength="6" />
+        </div>
+        <button type="submit" class="btn-auth-submit" id="login-submit-btn">
+          <i class="fa-solid fa-right-to-bracket"></i> ലോഗിൻ ചെയ്യുക
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form hidden">
+        <div class="auth-field">
+          <label for="reg-name">പൂർണ്ണ നാമം (Full Name)</label>
+          <input type="text" id="reg-name" placeholder="നിങ്ങളുടെ പേര്" required />
+        </div>
+        <div class="auth-field">
+          <label for="reg-phone">മൊബൈൽ / വാട്സാപ്പ് നമ്പർ</label>
+          <input type="tel" id="reg-phone" placeholder="9876543210" required />
+        </div>
+        <div class="auth-field">
+          <label for="reg-email">ഇമെയിൽ വിലാസം (Email ID)</label>
+          <input type="email" id="reg-email" placeholder="example@gmail.com" required />
+        </div>
+        <div class="auth-field">
+          <label for="reg-password">പുതിയ പാസ്‌വേഡ് (കുറഞ്ഞത് 6 അക്ഷരങ്ങൾ)</label>
+          <input type="password" id="reg-password" placeholder="••••••••" required minlength="6" />
+        </div>
+        <button type="submit" class="btn-auth-submit" id="reg-submit-btn">
+          <i class="fa-solid fa-user-plus"></i> അക്കൗണ്ട് രജിസ്റ്റർ ചെയ്യുക
+        </button>
+      </form>
+
+      <!-- Supabase Configuration & Step-by-Step Setup Tab -->
+      <div id="supabase-setup-panel" class="supabase-setup-panel hidden">
+        <div class="sb-guide-steps">
+          <h4><i class="fa-solid fa-bolt"></i> Supabase സൗജന്യമായി കണക്ട് ചെയ്യുന്ന വിധം:</h4>
+          <ol>
+            <li><a href="https://supabase.com" target="_blank" rel="noopener"><strong>supabase.com</strong></a> തുറന്ന് സൗജന്യ അക്കൗണ്ട് ഉണ്ടാക്കി <strong>"New Project"</strong> ക്ലിക്ക് ചെയ്യുക (ഉദാ: <code>digital-gramam-csc</code>).</li>
+            <li>പ്രോജക്റ്റ് തുറന്ന ശേഷം ഇടതുവശത്തെ മെനുവിൽ <strong>Project Settings (⚙️) → API</strong> എടുക്കുക.</li>
+            <li>അവിടെ കാണുന്ന <strong>Project URL</strong>-ഉം <strong>anon public Key</strong>-യും കോപ്പി ചെയ്ത് താഴെ പേസ്റ്റ് ചെയ്ത് സേവ് ചെയ്യുക (അല്ലെങ്കിൽ <code>supabase-auth.js</code> ഫയലിൽ ചേർക്കുക):</li>
+          </ol>
+        </div>
+
+        <form id="supabase-config-form" class="auth-form">
+          <div class="auth-field">
+            <label for="sb-url-input">Supabase Project URL</label>
+            <input type="url" id="sb-url-input" placeholder="https://xyzcompany.supabase.co" required />
+          </div>
+          <div class="auth-field">
+            <label for="sb-key-input">Supabase Anon Public Key</label>
+            <input type="text" id="sb-key-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required />
+          </div>
+          <button type="submit" class="btn-auth-submit">
+            <i class="fa-solid fa-plug-circle-check"></i> Supabase കീ സേവ് ചെയ്ത് കണക്ട് ചെയ്യുക
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="data.js"></script>
+  <script src="supabase-auth.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
