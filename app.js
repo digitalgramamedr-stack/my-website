@@ -635,17 +635,67 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // Gemini 2.5 Flash API with Google Search Grounding Integration
+    const GEMINI_API_KEY = (typeof process !== "undefined" && process.env && process.env.GEMINI_API_KEY) ? process.env.GEMINI_API_KEY : "";
+    const GEMINI_SYSTEM_INSTRUCTION = `നിങ്ങൾ ഡിജിറ്റൽ ഗ്രാമം CSC (Digital Gramam CSC, എടക്കളത്തൂർ, പി.ഒ എടക്കളത്തൂർ, തൃശൂർ, കേരള - 680552 | ഓണർ: മിഥുൻ ലാൽ വി ബി | കോൾ: 0487 2083582 | വാട്സാപ്പ്: 7356437712 | ഇമെയിൽ: digitalgramamcsc@gmail.com) എന്ന ഓൺലൈൻ സേവന കേന്ദ്രത്തിന്റെയും ഡിജി പ്രിന്റ് (DigiPrint)-ന്റെയും വിദഗ്ദ്ധനായ AI സഹായിയാണ്. 
+1. ഉപയോക്താവ് ഏത് ഭാഷയിൽ ചോദിച്ചാലും മറുപടി പൂർണ്ണമായും സ്വാഭാവികവും ലളിതവുമായ മലയാളത്തിൽ (Natural Malayalam) നൽകണം.
+2. പുതിയ വിവരങ്ങൾ, വാർത്തകൾ, സർക്കാർ കാര്യങ്ങൾ, ലൈവ് വിവരങ്ങൾ എന്നിവ ചോദിക്കുമ്പോൾ നൽകിയിട്ടുള്ള ഗൂഗിൾ സെർച്ച് ടൂൾ നിർബന്ധമായും ഉപയോഗിച്ച് കണ്ടെത്തി ഉത്തരം നൽകണം.
+3. മറുപടികൾ വ്യക്തമായി പോയിന്റുകളാക്കി നൽകുക.`;
+
+    function formatMarkdownToHtml(text) {
+      if (!text) return "";
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/^\s*[\*\-]\s+(.*)$/gm, "<li>$1</li>")
+        .replace(/(<li>.*<\/li>)/gs, "<ul>$1</ul>")
+        .replace(/\n/g, "<br/>");
+    }
+
+    async function askGeminiWithGoogleSearch(userMessage) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GEMINI_API_KEY)}`;
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          systemInstruction: {
+            parts: [{ text: GEMINI_SYSTEM_INSTRUCTION }]
+          },
+          contents: [
+            {
+              role: "user",
+              parts: [{ text: userMessage }]
+            }
+          ],
+          tools: [{ googleSearch: {} }]
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Gemini API HTTP ${response.status}`);
+      }
+      const data = await response.json();
+      const candidateText = data?.candidates?.[0]?.content?.parts
+        ?.map((p) => p.text || "")
+        .join("\n")
+        .trim();
+      if (!candidateText) throw new Error("Empty Gemini response");
+      return formatMarkdownToHtml(candidateText);
+    }
+
     // Initial Greeting
     appendMessage(`
-      <strong>നമസ്കാരം! 🙏 ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ (Digital Gramam CSC)</strong> ലൈവ് ചാറ്റിലേക്ക് സ്വാഗതം.<br/><br/>
-      നിങ്ങൾക്ക് ആവശ്യമുള്ള <strong>ഏത് സർട്ടിഫിക്കറ്റിന്റെയും സേവനത്തിന്റെയും പേര്</strong> ഇവിടെ ടൈപ്പ് ചെയ്താൽ അതിന് വേണ്ട ഡോക്യുമെന്റുകൾ ഉടൻ അറിയാം!<br/><br/>
+      <strong>നമസ്കാരം! 🙏 ഡിജിറ്റൽ ഗ്രാമം സിഎസ്ഇ (Digital Gramam CSC)</strong> ലൈവ് എഐ ചാറ്റിലേക്ക് സ്വാഗതം.<br/><br/>
+      നിങ്ങൾക്ക് ആവശ്യമുള്ള <strong>ഏത് സർട്ടിഫിക്കറ്റിന്റെയും സേവനത്തിന്റെയും പേരോ മറ്റ് സർക്കാർ/ലൈവ് വിവരങ്ങളോ</strong> ഏത് ഭാഷയിലും ഇവിടെ ചോദിക്കാം!<br/><br/>
       👤 <strong>ഓണർ:</strong> മിഥുൻ ലാൽ വി ബി<br/>
       📍 <strong>വിലാസം:</strong> എടക്കളത്തൂർ, പി.ഒ എടക്കളത്തൂർ, തൃശൂർ - 680552<br/>
       📞 <strong>കോൾ:</strong> <a href="tel:04872083582">0487 2083582</a><br/>
       💬 <strong>വാട്സാപ്പ്:</strong> <a href="https://wa.me/917356437712" target="_blank">7356437712</a>
     `);
 
-    function handleUserQuery(rawText) {
+    async function handleUserQuery(rawText) {
       const query = rawText.trim();
       if (!query) return;
       appendMessage(query, "user");
@@ -720,7 +770,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Search matching services from database
+      // Search matching services from local CSC database first
       const matches = flatServices.filter(
         (s) =>
           s.ml.toLowerCase().includes(q) ||
@@ -728,8 +778,8 @@ document.addEventListener("DOMContentLoaded", () => {
           s.desc.toLowerCase().includes(q)
       );
 
-      setTimeout(() => {
-        if (matches.length > 0) {
+      if (matches.length > 0) {
+        setTimeout(() => {
           const top = matches[0];
           const docsHtml = top.docs.map((d) => `<li>${d}</li>`).join("");
           appendMessage(`
@@ -741,14 +791,23 @@ document.addEventListener("DOMContentLoaded", () => {
               "നമസ്കാരം, " + top.ml + " അപേക്ഷിക്കാൻ ആഗ്രഹിക്കുന്നു"
             )}" target="_blank" style="color:#16a34a;font-weight:700;">👉 വാട്സാപ്പ് വഴി അപേക്ഷിക്കുക (7356437712)</a>
           `);
-        } else {
-          appendMessage(`
-            <strong>"${query}"</strong> എന്ന സേവനത്തെക്കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾക്കായി ഞങ്ങളെ നേരിട്ട് ബന്ധപ്പെടാവുന്നതാണ്:<br/>
-            📞 കോൾ: <a href="tel:04872083582"><strong>0487 2083582</strong></a><br/>
-            💬 വാട്സാപ്പ്: <a href="https://wa.me/917356437712" target="_blank"><strong>7356437712</strong></a>
-          `);
-        }
-      }, 250);
+        }, 250);
+        return;
+      }
+
+      // Call Gemini 2.5 Flash with Google Search Grounding for any general / live query
+      triggerAISpeakingAnimation(4000, "ഗൂഗിൾ സെർച്ച് വഴി വിവരങ്ങൾ തിരയുന്നു...");
+      try {
+        const aiAnswerHtml = await askGeminiWithGoogleSearch(query);
+        appendMessage(aiAnswerHtml, "bot");
+      } catch (err) {
+        console.warn("Gemini API fallback:", err);
+        appendMessage(`
+          <strong>"${query}"</strong> എന്ന സേവനത്തെക്കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾക്കായി ഞങ്ങളെ നേരിട്ട് ബന്ധപ്പെടാവുന്നതാണ്:<br/>
+          📞 കോൾ: <a href="tel:04872083582"><strong>0487 2083582</strong></a><br/>
+          💬 വാട്സാപ്പ്: <a href="https://wa.me/917356437712" target="_blank"><strong>7356437712</strong></a>
+        `);
+      }
     }
 
     if (chatForm) {
