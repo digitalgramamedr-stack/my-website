@@ -2567,18 +2567,20 @@ body {
 }
 
 /* ==========================================================================
-   Responsive Design
+   Responsive Design (Tablet, Mobile & Small Smartphone Screens)
    ========================================================================== */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
   .dp-showcase-header {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 20px;
   }
   .dp-icon-button-large {
-    max-width: 220px;
+    max-width: 210px;
     margin: 0 auto;
   }
   .dp-action-row {
@@ -2587,9 +2589,11 @@ body {
   .owner-card {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 28px 20px;
+    gap: 28px;
   }
   .owner-photo-col {
-    max-width: 280px;
+    max-width: 250px;
     margin: 0 auto;
   }
   .owner-contact-item {
@@ -2598,34 +2602,368 @@ body {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  /* Topbar compact mobile layout */
+  .topbar {
+    font-size: 0.76rem;
+    padding: 6px 0;
+  }
+  .topbar-left {
+    display: none;
+  }
+  .topbar-right {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Sticky Navbar Mobile */
+  .nav-container {
+    height: 68px;
+  }
+  .logo-ring-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+  .brand-title-ml {
+    font-size: 1.05rem;
+  }
+  .brand-subtitle-en {
+    font-size: 0.6rem;
+  }
+  .btn-call-header span {
+    display: none;
+  }
+  .btn-call-header {
+    padding: 10px 13px;
+  }
+
   .nav-links {
     display: none;
     position: absolute;
-    top: 80px;
+    top: 68px;
     left: 0;
     right: 0;
     background: #ffffff;
     flex-direction: column;
+    align-items: stretch;
     padding: 16px;
-    box-shadow: var(--shadow-md);
-    border-bottom: 2px solid var(--dg-green);
+    gap: 8px;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 3px solid var(--dg-green);
+    z-index: 120;
   }
   .nav-links.mobile-open {
     display: flex;
+  }
+  .nav-link {
+    padding: 12px 14px;
+    font-size: 0.98rem;
+  }
+  .digiprint-nav-btn {
+    justify-content: center;
+    padding: 10px 16px;
   }
   .mobile-menu-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
+
+  /* Hero Section Mobile */
+  .hero-section {
+    padding: 24px 0 44px;
+  }
+  .hero-badge {
+    font-size: 0.76rem;
+    padding: 5px 12px;
+  }
+  .hero-title {
+    font-size: 1.65rem;
+    line-height: 1.3;
+  }
+  .hero-description {
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+  }
+
+  /* Quick Dropdown Finder Mobile */
+  .quick-finder-card {
+    padding: 16px 14px;
+  }
+  .qf-header {
+    gap: 10px;
+  }
+  .qf-header i {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+  .qf-header h3 {
+    font-size: 0.98rem;
+  }
+  .qf-header p {
+    font-size: 0.78rem;
+  }
   .qf-controls {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .select-wrapper select {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 11px 34px 11px 12px;
+  }
+  .qr-docs-list {
+    grid-template-columns: 1fr;
+  }
+  .qr-actions {
+    flex-direction: column;
+  }
+  .qr-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hero CTA Buttons Full Width on Mobile */
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .btn-primary-glow,
+  .btn-digiprint-hero,
+  .btn-whatsapp-hero {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Orbital & DigiPrint Card Mobile */
+  .orbital-stage {
+    width: 240px;
+    height: 240px;
+  }
+  .ring-1 { width: 175px; height: 175px; }
+  .ring-2 { width: 220px; height: 220px; }
+  .ring-3 { width: 240px; height: 240px; }
+  .center-logo-pod {
+    width: 130px;
+    height: 130px;
+  }
+  .orbit-node {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+  .digiprint-floating-launcher {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+  }
+  .dp-launcher-logo-wrap {
+    width: 84px;
+    height: 84px;
+  }
+
+  /* Services Filter & Accordion Mobile */
+  .services-section {
+    padding: 44px 0;
+  }
+  .filter-bar {
+    padding: 14px;
+  }
+  .search-box input {
+    font-size: 16px; /* Prevents mobile zoom */
+    padding: 13px 40px 13px 42px;
+  }
+  .category-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .cat-tab {
+    flex-shrink: 0;
+    font-size: 0.84rem;
+    padding: 9px 14px;
+  }
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .toolbar-actions {
+    justify-content: center;
+  }
+  .btn-tool {
+    flex: 1;
+    justify-content: center;
+  }
+  .category-block-header {
+    padding: 16px;
+  }
+  .cb-title-group {
+    gap: 12px;
+  }
+  .cb-icon-circle {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+  }
+  .cb-title-group h3 {
+    font-size: 1.08rem;
+  }
+  .subcategory-wrapper {
+    padding: 14px;
   }
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .service-trigger {
+    padding: 14px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .st-right {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sdb-actions {
+    flex-direction: column;
+  }
+
+  /* DigiPrint Section & Modal Mobile */
+  .digiprint-showcase-box {
+    padding: 20px 14px;
+    border-radius: 20px;
+  }
+  .dp-action-row {
+    flex-direction: column;
+  }
+  .btn-dp-modal,
+  .btn-dp-wa {
+    width: 100%;
+    justify-content: center;
+  }
+  .digiprint-inline-grid {
+    grid-template-columns: 1fr;
+  }
+  .dp-modal-overlay {
+    padding: 10px;
+  }
+  .dp-modal-content {
+    max-height: 94vh;
+    border-radius: 20px;
   }
   .dp-modal-header {
     flex-direction: column;
     text-align: center;
+    padding: 18px 14px;
+    gap: 12px;
+  }
+  .dp-modal-logo {
+    width: 72px;
+    height: 72px;
+  }
+  .dp-modal-header h2 {
+    font-size: 1.1rem;
+  }
+  .dp-modal-body {
+    padding: 14px;
+    grid-template-columns: 1fr;
+  }
+  .dp-modal-footer {
+    padding: 12px 14px;
+    flex-direction: column;
+    text-align: center;
+  }
+  .dp-footer-btns {
+    width: 100%;
+    flex-direction: column;
+  }
+  .btn-dp-call,
+  .btn-dp-whatsapp {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Owner & Contact Section Mobile */
+  .owner-img {
+    height: 280px;
+  }
+  .owner-contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-cards-row {
+    grid-template-columns: 1fr;
+  }
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-brand {
+    flex-direction: column;
+  }
+  .footer-links {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* 3D AI Chatbot Mobile Adaptation */
+  .chatbot-wrapper {
+    bottom: 12px;
+    right: 12px;
+  }
+  .ai-mascot-speech {
+    max-width: 195px;
+    font-size: 0.74rem;
+    padding: 8px 22px 8px 10px;
+  }
+  .ai-character-figure {
+    width: 74px;
+    height: 106px;
+  }
+  .ai-holo-base {
+    width: 74px;
+    height: 20px;
+  }
+  .ai-launcher-badge {
+    font-size: 0.74rem;
+    padding: 5px 12px;
+  }
+  .chatbot-window {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-width: none;
+    height: calc(100dvh - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 20px;
+    z-index: 250;
+  }
+  .chat-input-area input {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-title-ml {
+    font-size: 0.94rem;
+  }
+  .hero-title {
+    font-size: 1.45rem;
+  }
+  .topbar-right a:last-child {
+    display: none; /* Keep phone & location clean on very narrow screens */
   }
 }
